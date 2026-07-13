@@ -14,7 +14,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: webp-delivery-helper-for-w3tc.php
 msgid "WebP Delivery Helper for W3TC"
-msgstr "WebP Delivery Helper for W3TC"
+msgstr "WebP-Helper für W3TC"
 
 #. Plugin URI of the plugin
 #: webp-delivery-helper-for-w3tc.php
