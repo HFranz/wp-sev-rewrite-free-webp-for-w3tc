@@ -8,6 +8,8 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Version: 1.0
+ * Text Domain: w3tc-webp-helper
+ * Domain Path: /languages
  * Requires at least: 6.0
  * Requires PHP: 8.0
  * Requires Plugins: w3-total-cache
@@ -44,3 +46,11 @@ add_action(
 		add_filter( 'the_content', array( $content_filter, 'filter' ), 20 );
 	}
 );
+
+add_action( 'init', 'w3tc_webp_helper_load_textdomain' );
+/**
+ * Load the plugin's translations.
+ */
+function w3tc_webp_helper_load_textdomain(): void {
+	load_plugin_textdomain( 'w3tc-webp-helper', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
