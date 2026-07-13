@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ContentFilterTest extends TestCase {
 
-	private const string BASE = 'http://example.com/wp-content/uploads';
+	private const BASE = 'http://example.com/wp-content/uploads';
 
 	protected function setUp(): void {
 		WPTestStub::reset();
@@ -258,4 +258,3 @@ class ContentFilterTest extends TestCase {
 		$this->assertStringNotContainsString( ' src=', $result );
 	}
 }
-
