@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: W3TC WebP Helper
- * Description: Replaces image URLs in post content with WebP versions when the browser supports WebP, based on W3 Total Cache ImageService conversion status.
+ * Description: Replaces image URLs in post content with WebP versions when supported by the browser and when W3 Total Cache ImageService has successfully generated a WebP version.
  * Author: Heinrich Franz
  * Author URI: https://sevmatic.com
  * Plugin URI: https://sevmatic.com/?plugin=w3tc-webp-helper&source=wordpress

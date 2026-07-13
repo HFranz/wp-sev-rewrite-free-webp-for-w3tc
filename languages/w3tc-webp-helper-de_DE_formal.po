@@ -1,12 +1,9 @@
-# Copyright (C) 2026 Heinrich Franz
-# This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: W3TC WebP Helper 1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-w3tc-webp-"
-"helper\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-w3tc-webp-helper\n"
 "POT-Creation-Date: 2026-07-13T13:59:23+00:00\n"
-"PO-Revision-Date: 2026-07-13 16:49+0200\n"
+"PO-Revision-Date: 2026-07-13 17:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE@formal\n"
@@ -26,16 +23,6 @@ msgstr "W3TC WebP-Helfer"
 msgid "https://sevmatic.com/?plugin=w3tc-webp-helper&source=wordpress"
 msgstr "https://sevmatic.com/?plugin=w3tc-webp-helper&source=wordpress"
 
-#. Description of the plugin
-#: w3tc-webp-helper.php
-msgid ""
-"Replaces image URLs in post content with WebP versions when the browser "
-"supports WebP, based on W3 Total Cache ImageService conversion status."
-msgstr ""
-"Ersetzt Bild-URLs im Beitragsinhalt durch WebP-Versionen, sofern der "
-"Browser WebP unterstützt und die Bilder vom W3 Total Cache ImageService "
-"konvertiert wurden."
-
 #. Author of the plugin
 #: w3tc-webp-helper.php
 msgid "Heinrich Franz"
@@ -45,3 +32,8 @@ msgstr "Heinrich Franz"
 #: w3tc-webp-helper.php
 msgid "https://sevmatic.com"
 msgstr "https://sevmatic.com"
+
+#. Description of the plugin
+#: w3tc-webp-helper.php
+msgid "Replaces image URLs in post content with WebP versions when supported by the browser and when W3 Total Cache ImageService has successfully generated a WebP version."
+msgstr "Ersetzt Bild-URLs im Beitragsinhalt durch WebP-Versionen, sofern der Browser dies unterstützt und der W3 Total Cache ImageService erfolgreich eine WebP-Version generiert hat."

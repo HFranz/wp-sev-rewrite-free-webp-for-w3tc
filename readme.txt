@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Replaces image URLs in post content with WebP versions when the browser supports WebP, based on W3 Total Cache ImageService conversion status.
+Replaces image URLs in post content with WebP versions when supported by the browser and when W3 Total Cache ImageService has successfully generated a WebP version.
 
 == Description ==
 
