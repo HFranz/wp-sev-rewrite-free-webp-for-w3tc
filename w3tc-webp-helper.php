@@ -46,11 +46,3 @@ add_action(
 		add_filter( 'the_content', array( $content_filter, 'filter' ), 20 );
 	}
 );
-
-add_action( 'init', 'w3tc_webp_helper_load_textdomain' );
-/**
- * Load the plugin's translations.
- */
-function w3tc_webp_helper_load_textdomain(): void {
-	load_plugin_textdomain( 'w3tc-webp-helper', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
