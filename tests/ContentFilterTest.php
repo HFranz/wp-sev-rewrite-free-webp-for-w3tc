@@ -70,6 +70,7 @@ class ContentFilterTest extends TestCase {
 	}
 
 	public function testNonUploadUrlIsNotTouched(): void {
+		/** @noinspection HtmlRequiredAltAttribute */
 		$html = '<img src="https://external-cdn.com/images/ext.jpg">';
 
 		$this->assertSame( $html, $this->filter( $html ) );
@@ -81,6 +82,8 @@ class ContentFilterTest extends TestCase {
 		// home_url('/wp-content/uploads/rel-img.jpg') → 'http://example.com/wp-content/uploads/rel-img.jpg'
 		WPTestStub::registerConverted( 20, self::BASE . '/rel-img.jpg' );
 
+		/** @noinspection HtmlUnknownTarget */
+		/** @noinspection HtmlRequiredAltAttribute */
 		$result = $this->filter( '<img src="/wp-content/uploads/rel-img.jpg">' );
 
 		// Output stays relative, only the extension changes.
@@ -211,7 +214,7 @@ class ContentFilterTest extends TestCase {
 		$this->assertStringContainsString( 'with-qs.webp?ver=1.5', $result );
 	}
 
-	// ── Meta data edge cases ────────────────────────────────────────────────────
+	// ── Metadata edge cases ────────────────────────────────────────────────────
 
 	public function testNonArrayMetaIsHandledGracefully(): void {
 		WPTestStub::$attachment_ids[ self::BASE . '/bad-meta.jpg' ] = 90;
