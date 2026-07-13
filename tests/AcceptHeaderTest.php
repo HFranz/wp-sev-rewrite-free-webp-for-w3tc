@@ -4,16 +4,17 @@ declare( strict_types=1 );
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use WebPDeliveryHelperForW3TC\Accept_Header;
 
 /**
- * Tests for W3TC_WebP_Accept_Header::accepts().
+ * Tests for Accept_Header::accepts().
  */
 class AcceptHeaderTest extends TestCase {
 
 	/** @dataProvider acceptHeaderProvider */
 	#[DataProvider( 'acceptHeaderProvider' )]
 	public function testAcceptsWebp( string $header, bool $expected ): void {
-		$this->assertSame( $expected, W3TC_WebP_Accept_Header::accepts( $header ) );
+		$this->assertSame( $expected, Accept_Header::accepts( $header ) );
 	}
 
 	public static function acceptHeaderProvider(): array {

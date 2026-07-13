@@ -5,6 +5,8 @@
  * @package WebPDeliveryHelperForW3TC
  */
 
+namespace WebPDeliveryHelperForW3TC;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
@@ -13,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Handles Vary: Accept header and W3TC page cache key extension
  * to ensure WebP and non-WebP responses are cached separately.
  */
-class W3TC_WebP_Cache_Handler {
+class Cache_Handler {
 
 	/**
 	 * Sends a Vary: Accept header, merging with any existing Vary values.
@@ -61,7 +63,7 @@ class W3TC_WebP_Cache_Handler {
 	 */
 	public function extend_cache_key( string $key ): string {
 		$accept        = isset( $_SERVER['HTTP_ACCEPT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_ACCEPT'] ) ) : '';
-		$supports_webp = '' !== $accept && W3TC_WebP_Accept_Header::accepts( $accept );
+		$supports_webp = '' !== $accept && Accept_Header::accepts( $accept );
 
 		return $key . ( $supports_webp ? ':webp' : ':no-webp' );
 	}

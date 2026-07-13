@@ -5,6 +5,8 @@
  * @package WebPDeliveryHelperForW3TC
  */
 
+namespace WebPDeliveryHelperForW3TC;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
@@ -13,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Replaces image URLs in post content with WebP variants
  * when W3TC has converted them and the browser supports WebP.
  */
-class W3TC_WebP_Content_Filter {
+class Content_Filter {
 
 	/** @var array<string, string> Per-request URL resolution cache. */
 	private array $url_cache = array();
@@ -29,7 +31,7 @@ class W3TC_WebP_Content_Filter {
 	 */
 	public function filter( string $content ): string {
 		$accept = isset( $_SERVER['HTTP_ACCEPT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_ACCEPT'] ) ) : '';
-		if ( '' === $accept || ! W3TC_WebP_Accept_Header::accepts( $accept ) ) {
+		if ( '' === $accept || ! Accept_Header::accepts( $accept ) ) {
 			return $content;
 		}
 
@@ -126,6 +128,18 @@ class W3TC_WebP_Content_Filter {
 	}
 
 	/**
+	 * Checks whether a single character is ASCII whitespace per the HTML spec
+	 * (tab, LF, FF, CR, space). Avoids a hard dependency on ext-ctype, which
+	 * cannot be guaranteed at runtime since this plugin ships without vendor/.
+	 *
+	 * @param string $char Single character to check.
+	 * @return bool True if the character is ASCII whitespace.
+	 */
+	private static function is_whitespace( string $char ): bool {
+		return str_contains( " \t\n\r\f", $char );
+	}
+
+	/**
 	 * Parses a srcset attribute value and replaces each URL with its WebP variant.
 	 *
 	 * Parses according to the HTML specification:
@@ -147,7 +161,7 @@ class W3TC_WebP_Content_Filter {
 
 		while ( $position < $length ) {
 			// 1. Skip leading whitespace and commas (separators between candidates).
-			while ( $position < $length && ( ',' === $srcset[ $position ] || ctype_space( $srcset[ $position ] ) ) ) {
+			while ( $position < $length && ( ',' === $srcset[ $position ] || self::is_whitespace( $srcset[ $position ] ) ) ) {
 				++$position;
 			}
 
@@ -157,7 +171,7 @@ class W3TC_WebP_Content_Filter {
 
 			// 2. Collect URL: everything up to the next whitespace (commas in path/query are kept).
 			$url_start = $position;
-			while ( $position < $length && ! ctype_space( $srcset[ $position ] ) ) {
+			while ( $position < $length && ! self::is_whitespace( $srcset[ $position ] ) ) {
 				++$position;
 			}
 			$url = rtrim( substr( $srcset, $url_start, $position - $url_start ), ',' );
@@ -169,7 +183,7 @@ class W3TC_WebP_Content_Filter {
 			// 3. Collect descriptor tokens (e.g. "320w", "2x") until the next comma or end.
 			$descriptors = array();
 			while ( $position < $length ) {
-				while ( $position < $length && ctype_space( $srcset[ $position ] ) ) {
+				while ( $position < $length && self::is_whitespace( $srcset[ $position ] ) ) {
 					++$position;
 				}
 
@@ -183,7 +197,7 @@ class W3TC_WebP_Content_Filter {
 				}
 
 				$token_start = $position;
-				while ( $position < $length && ! ctype_space( $srcset[ $position ] ) && ',' !== $srcset[ $position ] ) {
+				while ( $position < $length && ! self::is_whitespace( $srcset[ $position ] ) && ',' !== $srcset[ $position ] ) {
 					++$position;
 				}
 				$descriptors[] = substr( $srcset, $token_start, $position - $token_start );

@@ -19,6 +19,9 @@
  * @package WebPDeliveryHelperForW3TC
  */
 
+use WebPDeliveryHelperForW3TC\Cache_Handler;
+use WebPDeliveryHelperForW3TC\Content_Filter;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
@@ -38,11 +41,11 @@ add_action(
 			return;
 		}
 
-		$cache_handler = new W3TC_WebP_Cache_Handler();
+		$cache_handler = new Cache_Handler();
 		add_action( 'send_headers', array( $cache_handler, 'send_vary_header' ) );
 		add_filter( 'w3tc_pagecache_cache_key', array( $cache_handler, 'extend_cache_key' ) );
 
-		$content_filter = new W3TC_WebP_Content_Filter();
+		$content_filter = new Content_Filter();
 		add_filter( 'the_content', array( $content_filter, 'filter' ), 20 );
 	}
 );

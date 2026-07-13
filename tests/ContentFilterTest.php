@@ -5,10 +5,10 @@ declare( strict_types=1 );
 use PHPUnit\Framework\TestCase;
 
 /**
- * Tests for W3TC_WebP_Content_Filter via the the_content filter.
+ * Tests for WebPDeliveryHelperForW3TC\Content_Filter via the the_content filter.
  *
  * Each test uses unique file names to avoid interference caused by the
- * url_cache / meta_cache instance properties of W3TC_WebP_Content_Filter,
+ * url_cache / meta_cache instance properties of Content_Filter,
  * which persist for the lifetime of the registered filter object.
  */
 class ContentFilterTest extends TestCase {

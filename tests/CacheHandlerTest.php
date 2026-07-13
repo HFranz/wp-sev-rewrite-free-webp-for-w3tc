@@ -3,9 +3,10 @@
 declare( strict_types=1 );
 
 use PHPUnit\Framework\TestCase;
+use WebPDeliveryHelperForW3TC\Cache_Handler;
 
 /**
- * Tests for W3TC_WebP_Cache_Handler.
+ * Tests for Cache_Handler.
  *
  * Note: send_vary_header() relies on the PHP built-in functions header(),
  * headers_sent(), and headers_list(), which cannot be mocked without a
@@ -14,10 +15,10 @@ use PHPUnit\Framework\TestCase;
  */
 class CacheHandlerTest extends TestCase {
 
-	private W3TC_WebP_Cache_Handler $handler;
+	private Cache_Handler $handler;
 
 	protected function setUp(): void {
-		$this->handler = new W3TC_WebP_Cache_Handler();
+		$this->handler = new Cache_Handler();
 	}
 
 	protected function tearDown(): void {

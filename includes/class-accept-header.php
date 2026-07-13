@@ -5,6 +5,8 @@
  * @package WebPDeliveryHelperForW3TC
  */
 
+namespace WebPDeliveryHelperForW3TC;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
@@ -12,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handles detection of WebP support via the HTTP Accept header.
  */
-class W3TC_WebP_Accept_Header {
+class Accept_Header {
 
 	/**
 	 * Case-insensitively checks whether the Accept header accepts image/webp (q > 0).

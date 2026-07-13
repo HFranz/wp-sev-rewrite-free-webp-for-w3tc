@@ -3,9 +3,11 @@
 declare( strict_types=1 );
 
 use PHPUnit\Framework\TestCase;
+use WebPDeliveryHelperForW3TC\Cache_Handler;
+use WebPDeliveryHelperForW3TC\Content_Filter;
 
 /**
- * Tests for the main plugin file (w3tc-webp-helper.php).
+ * Tests for the main plugin file (webp-delivery-helper-for-w3tc.php).
  *
  * Verifies that the bootstrap correctly registers all hooks with the right
  * object types and priorities after plugins_loaded has fired.
@@ -30,13 +32,13 @@ class PluginBootstrapTest extends TestCase {
 		$found     = false;
 
 		foreach ( $callbacks as $callback ) {
-			if ( is_array( $callback ) && $callback[0] instanceof W3TC_WebP_Content_Filter ) {
+			if ( is_array( $callback ) && $callback[0] instanceof Content_Filter ) {
 				$found = true;
 				break;
 			}
 		}
 
-		$this->assertTrue( $found, 'Expected a W3TC_WebP_Content_Filter instance to be registered for the_content.' );
+		$this->assertTrue( $found, 'Expected a Content_Filter instance to be registered for the_content.' );
 	}
 
 	public function testSendHeadersActionIsRegistered(): void {
@@ -48,14 +50,14 @@ class PluginBootstrapTest extends TestCase {
 
 		foreach ( $GLOBALS['wp_filter']['send_headers'] as $priority_group ) {
 			foreach ( $priority_group as $callback ) {
-				if ( is_array( $callback ) && $callback[0] instanceof W3TC_WebP_Cache_Handler ) {
+				if ( is_array( $callback ) && $callback[0] instanceof Cache_Handler ) {
 					$found = true;
 					break 2;
 				}
 			}
 		}
 
-		$this->assertTrue( $found, 'Expected a W3TC_WebP_Cache_Handler instance to be registered for send_headers.' );
+		$this->assertTrue( $found, 'Expected a Cache_Handler instance to be registered for send_headers.' );
 	}
 
 	public function testPageCacheCacheKeyFilterIsRegistered(): void {
@@ -67,20 +69,20 @@ class PluginBootstrapTest extends TestCase {
 
 		foreach ( $GLOBALS['wp_filter']['w3tc_pagecache_cache_key'] as $priority_group ) {
 			foreach ( $priority_group as $callback ) {
-				if ( is_array( $callback ) && $callback[0] instanceof W3TC_WebP_Cache_Handler ) {
+				if ( is_array( $callback ) && $callback[0] instanceof Cache_Handler ) {
 					$found = true;
 					break 2;
 				}
 			}
 		}
 
-		$this->assertTrue( $found, 'Expected a W3TC_WebP_Cache_Handler instance to be registered for w3tc_pagecache_cache_key.' );
+		$this->assertTrue( $found, 'Expected a Cache_Handler instance to be registered for w3tc_pagecache_cache_key.' );
 	}
 
 	// ── Guard: W3TC not active ────────────────────────────────────────────────
 	// When W3TC is not defined, plugins_loaded must not register any hooks.
 	// This scenario cannot be tested in the same process (W3TC is already defined
 	// as a constant). It is covered by code review of the guard condition in
-	// w3tc-webp-helper.php.
+	// webp-delivery-helper-for-w3tc.php.
 }
 
