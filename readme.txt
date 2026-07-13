@@ -4,7 +4,7 @@ Tags: webp, images, w3-total-cache, performance, optimization
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 1.0
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,11 +51,8 @@ Yes. The plugin replaces both `src` / `srcset` and `data-src` / `data-srcset` at
 
 == Changelog ==
 
+= 2.0 =
+* Rename plugin to "WebP Delivery Helper for W3TC" to avoid confusion with W3 Total Cache plugin.
+
 = 1.0 =
 * Initial release.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Initial release.
-
