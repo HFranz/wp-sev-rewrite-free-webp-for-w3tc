@@ -11,8 +11,8 @@
     ]
   },
   "scripts": {
-    "make-pot": "wp i18n make-pot . languages/webp-delivery-helper-for-w3tc.pot --exclude=node_modules,vendor",
-    "update-po": "wp i18n update-po languages/webp-delivery-helper-for-w3tc.pot languages/",
+    "make-pot": "wp i18n make-pot . languages/sev-rewrite-free-webp-for-w3tc.pot --exclude=node_modules,vendor",
+    "update-po": "wp i18n update-po languages/sev-rewrite-free-webp-for-w3tc.pot languages/",
     "make-php": "wp i18n make-php languages/",
     "lint:php": "phpcs -p",
     "fix:php": "phpcbf -p",

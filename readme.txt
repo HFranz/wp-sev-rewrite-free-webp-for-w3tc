@@ -1,4 +1,4 @@
-=== WebP Delivery Helper for W3TC ===
+=== SEV Rewrite-Free WebP for W3TC ===
 Contributors: hfranz
 Tags: webp, images, w3-total-cache, performance, optimization
 Requires at least: 6.0
@@ -12,7 +12,7 @@ Replaces image URLs in post content with WebP versions when supported by the bro
 
 == Description ==
 
-WebP Delivery Helper for W3TC is a lightweight companion plugin for [W3 Total Cache](https://wordpress.org/plugins/w3-total-cache/) that automatically serves WebP images to browsers that support them.
+SEV Rewrite-Free WebP for W3TC is a lightweight companion plugin for [W3 Total Cache](https://wordpress.org/plugins/w3-total-cache/) that automatically serves WebP images to browsers that support them.
 
 This is an independent, unofficial add-on and is not affiliated with, endorsed by, or sponsored by BoldGrid / W3 EDGE, the makers of W3 Total Cache. "W3 Total Cache" is a trademark of its respective owner and is used here only to describe compatibility.
 
@@ -31,7 +31,7 @@ This is an independent, unofficial add-on and is not affiliated with, endorsed b
 
 == Installation ==
 
-1. Upload the `webp-delivery-helper-for-w3tc` folder to the `/wp-content/plugins/` directory.
+1. Upload the `sev-rewrite-free-webp-for-w3tc` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Ensure W3 Total Cache is installed and that images have been converted via W3TC ImageService.
 
@@ -52,7 +52,7 @@ Yes. The plugin replaces both `src` / `srcset` and `data-src` / `data-srcset` at
 == Changelog ==
 
 = 2.0 =
-* Rename plugin to "WebP Delivery Helper for W3TC" to avoid confusion with W3 Total Cache plugin.
+* Rename plugin to "SEV Rewrite-Free WebP for W3TC" to avoid confusion with W3 Total Cache plugin.
 * Add translation support and German translation.
 
 = 1.0 =

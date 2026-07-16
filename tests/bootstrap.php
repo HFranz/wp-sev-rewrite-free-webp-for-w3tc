@@ -151,6 +151,6 @@ class WPTestStub {
 // Simulate W3TC as active and fire plugins_loaded so the guard takes effect.
 const W3TC = true;
 
-require_once dirname( __DIR__ ) . '/webp-delivery-helper-for-w3tc.php';
+require_once dirname( __DIR__ ) . '/sev-rewrite-free-webp-for-w3tc.php';
 
 do_action( 'plugins_loaded' );

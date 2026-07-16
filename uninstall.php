@@ -1,6 +1,6 @@
 <?php
 /**
- * Uninstall routine for WebP Delivery Helper for W3TC.
+ * Uninstall routine for SEV Rewrite-Free WebP for W3TC.
  *
  * Called automatically by WordPress when the plugin is deleted via the admin UI.
  * This plugin stores no options or custom database tables, so no cleanup is required.

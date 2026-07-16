@@ -7,7 +7,7 @@ use WebPDeliveryHelperForW3TC\Cache_Handler;
 use WebPDeliveryHelperForW3TC\Content_Filter;
 
 /**
- * Tests for the main plugin file (webp-delivery-helper-for-w3tc.php).
+ * Tests for the main plugin file (sev-rewrite-free-webp-for-w3tc.php).
  *
  * Verifies that the bootstrap correctly registers all hooks with the right
  * object types and priorities after plugins_loaded has fired.
@@ -83,6 +83,6 @@ class PluginBootstrapTest extends TestCase {
 	// When W3TC is not defined, plugins_loaded must not register any hooks.
 	// This scenario cannot be tested in the same process (W3TC is already defined
 	// as a constant). It is covered by code review of the guard condition in
-	// webp-delivery-helper-for-w3tc.php.
+	// sev-rewrite-free-webp-for-w3tc.php.
 }
 

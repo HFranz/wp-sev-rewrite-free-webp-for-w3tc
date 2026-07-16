@@ -8,7 +8,7 @@
 ## Zweck & Architektur
 Dieses WordPress-Plugin ergänzt **W3 Total Cache (W3TC)** um WebP-Auslieferung, ohne selbst zu konvertieren:
 
-- `webp-delivery-helper-for-w3tc.php` – Bootstrap. Hookt sich nur ein, wenn `defined('W3TC')` (Laufzeit-Check statt `Requires Plugins`, wichtig für mu-plugins) via `plugins_loaded`.
+- `sev-rewrite-free-webp-for-w3tc.php` – Bootstrap. Hookt sich nur ein, wenn `defined('W3TC')` (Laufzeit-Check statt `Requires Plugins`, wichtig für mu-plugins) via `plugins_loaded`.
 - `includes/class-accept-header.php` – `Accept_Header::accepts()`: statische Utility, prüft `Accept`-Header nach RFC-7231-Spezifität (`image/webp` > `image/*` > `*/*`, `q=0` = abgelehnt).
 - `includes/class-content-filter.php` – `Content_Filter::filter()`, gehookt an `the_content` (Priorität 20). Ersetzt `src`/`data-src`/`srcset`/`data-srcset` per Regex, prüft pro Bild-URL das Post-Meta `w3tc_imageservice['status'] === 'converted'` (von W3TC gesetzt) und tauscht die Dateiendung gegen `.webp`. Hat eigene, minimale `srcset`-Parser-Implementierung nach HTML-Spec (kein `explode(',', ...)`, da Kommas in Query-Strings vorkommen können).
 - `includes/class-cache-handler.php` – `Cache_Handler`: sendet `Vary: Accept` (für CDN/Reverse-Proxy) via `send_headers` und erweitert den W3TC-Cache-Key um `:webp`/`:no-webp` via Filter `w3tc_pagecache_cache_key` (W3TC selbst ignoriert Vary-Header intern).
@@ -31,11 +31,11 @@ Dieses WordPress-Plugin ergänzt **W3 Total Cache (W3TC)** um WebP-Auslieferung,
 
 ## Weitere Dev-Workflows
 - `composer lint:php` / `composer fix:php` – PHPCS/PHPCBF (WPCS).
-- `composer make-pot` / `update-po` / `make-php` – i18n-Workflow via WP-CLI (`wp i18n ...`), Text-Domain `webp-delivery-helper-for-w3tc`, Sprachdateien in `languages/`.
+- `composer make-pot` / `update-po` / `make-php` – i18n-Workflow via WP-CLI (`wp i18n ...`), Text-Domain `sev-rewrite-free-webp-for-w3tc`, Sprachdateien in `languages/`.
 - Keine Build-Pipeline für JS/CSS – das Plugin enthält keine Assets.
 - `uninstall.php` macht bewusst nichts (keine Options/Tabellen zu bereinigen) – bei neuen Optionen dort Cleanup ergänzen.
 
 ## Beim Ändern von Code beachten
 - Änderungen an `Accept_Header::accepts()` oder der Regex/Parsing-Logik in `Content_Filter` immer mit Tests in `tests/AcceptHeaderTest.php` bzw. `tests/ContentFilterTest.php` absichern (Edge Cases: `q=0`, Query-Strings mit Kommas, `.jpg`/`.jpeg`-Mismatch, Thumbnail-Suffixe `-300x300`).
-- Neue Hooks/Filter nur im `plugins_loaded`-Guard in `webp-delivery-helper-for-w3tc.php` registrieren, damit sie inaktiv bleiben, wenn W3TC fehlt.
+- Neue Hooks/Filter nur im `plugins_loaded`-Guard in `sev-rewrite-free-webp-for-w3tc.php` registrieren, damit sie inaktiv bleiben, wenn W3TC fehlt.
 

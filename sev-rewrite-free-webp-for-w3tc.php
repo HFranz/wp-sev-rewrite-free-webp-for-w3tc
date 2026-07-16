@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: WebP Delivery Helper for W3TC
+ * Plugin Name: SEV Rewrite-Free WebP for W3TC
  * Description: Replaces image URLs in post content with WebP versions when supported by the browser and when W3 Total Cache ImageService has successfully generated a WebP version.
  * Author: Heinrich Franz
  * Author URI: https://sevmatic.com
- * Plugin URI: https://github.com/HFranz/wp-webp-delivery-helper-for-w3tc
+ * Plugin URI: https://github.com/HFranz/wp-sev-rewrite-free-webp-for-w3tc
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Version: 2.0
- * Text Domain: webp-delivery-helper-for-w3tc
+ * Text Domain: sev-rewrite-free-webp-for-w3tc
  * Domain Path: /languages
  * Requires at least: 6.0
  * Requires PHP: 8.0
