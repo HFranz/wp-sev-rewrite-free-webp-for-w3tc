@@ -1,6 +1,6 @@
 === SEV Rewrite-Free WebP for W3TC ===
 Contributors: hfranz
-Tags: webp, images, w3-total-cache, performance, optimization
+Tags: webp, images, w3-total-cache, performance, optimization, plesk, apache, nginx
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 8.0
